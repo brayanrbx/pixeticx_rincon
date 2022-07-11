@@ -2,7 +2,12 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'oswald': ['Oswald', 'sans-serif'],
+        'roboto-slab': ['Roboto Slab', 'serif']
+      },
+    },
   },
   plugins: [],
 }

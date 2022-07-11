@@ -15,3 +15,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.item-effect {
+  @apply transition-all ease-in-out duration-300 cursor-pointer hover:text-sky-500;
+}
