@@ -12,17 +12,18 @@ const ItemListContainer = ({ greeting }) => {
       setTimeout(() => {
         resolve(products);
       }, 3000);
-    })
+    });
     prom.then(data => setItems(data));
   }, []);
 
   return (
-    <main className='font-oswald'>
+    <>
       <div className='mb-2 text-center'>{greeting}</div>
-      <ItemCount stock={5} initial={1} onAdd={(n) => alert(`agregados ${n} productos`)} />
+      <ItemCount stock={5} initial={1} onAdd={(n) => alert(`Added ${n} products to cart`)} />
       <ItemList items={items} />
-    </main>
+    </>
   );
 };
+
 
 export default ItemListContainer;

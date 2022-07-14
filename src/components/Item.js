@@ -12,9 +12,9 @@ const Item = ({ id, title, price, image }) => {
   return (
     <div className='flex flex-col w-60 p-2 border text-center'>
       <h2>{title}</h2>
-      <p>{price}</p>
-      <img src={image} alt={title} />
-      <a href={id} className='mt-auto'>Ver detalles</a>
+      <p>$ {price}</p>
+      <img src={image} alt={title} className='m-auto' />
+      <a href={id} className='mt-auto'>More details</a>
     </div>
   );
 };

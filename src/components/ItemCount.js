@@ -10,9 +10,10 @@ import { useState } from 'react';
  */
 const ItemCount = ({ stock, initial, onAdd }) => {
   const [count, setCount] = useState(initial);
+
   return (
     <div className='grid gap-2 w-60 mx-auto mb-4 p-2 border-2 rounded'>
-      <h3 className='text-center'>Item</h3>
+      <h3 className='text-center text-emerald-700'>In Stock</h3>
       <div className='flex justify-around gap-10 border-2 rounded'>
         <button onClick={() => count > 0 && setCount(count - 1)}>-</button>
         <p>{count}</p>
@@ -21,7 +22,8 @@ const ItemCount = ({ stock, initial, onAdd }) => {
       <button
         className=' border-2 rounded'
         onClick={() => count <= stock && onAdd(count)}
-        >Agregar al Carrito</button>
+        >Add to cart
+      </button>
     </div>
   );
 };
