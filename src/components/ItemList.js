@@ -8,8 +8,8 @@ import Item from './Item';
  */
 const ItemList = ({ items }) => {
   return (
-    <section className='grid justify-center justify-items-center gap-4 w-full mx-auto p-2 sm:grid-cols-2 sm:w-[95%] md:grid-cols-3 lg:grid-cols-4'>
-      {items.map((item, i) => <Item {...item} key={i} />)}
+    <section className='grid justify-center justify-items-center gap-4 w-full mx-auto p-2 sm:grid-cols-2 sm:w-[95%] md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6'>
+      {items.map((item) => <Item {...item} key={item.id} />)}
     </section>
   );
 };

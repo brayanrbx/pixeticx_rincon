@@ -20,7 +20,7 @@ const ItemCount = ({ stock, initial, onAdd }) => {
         <button onClick={() => setCount(count + 1)}>+</button>
       </div>
       <button
-        className=' border-2 rounded'
+        className=' border-2 rounded item-effect'
         onClick={() => count <= stock && onAdd(count)}
         >Add to cart
       </button>

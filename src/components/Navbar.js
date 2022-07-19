@@ -1,7 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import CartWidget from './CartWidget';
 import logo from '../assets/img/logo.svg';
+import CategoriesContainer from './CategoriesContainer';
 
 /**
  * This function let to create a component that added a navbar
@@ -9,6 +11,7 @@ import logo from '../assets/img/logo.svg';
  */
 const Navbar = () => {
   const [clicked, setClicked] = useState(false);
+  const [active, setActive] = useState(false);
 
   /**
    * This function let to display the menu
@@ -17,10 +20,14 @@ const Navbar = () => {
     setClicked(!clicked);
   };
 
+  const handleActive = () => {
+    setActive(!active);
+  }
+
   return (
     <nav className='grid grid-cols-2 items-center gap-2 mb-2 p-2 bg-white font-roboto-slab text-center lg:grid-cols-3'>
       <div className='flex gap-10 p-2 w-36'>
-        <img src={logo} alt='Logo' className='object-fit'/>
+          <Link to="/"><img src={logo} alt='Logo' /></Link>
       </div>
       <div className={`${clicked ? 'top-0 left-0 w-[100%] duration-300': 'top-0 -left-[188rem] duration-300'} absolute flex flex-col p-2 bg-black text-white transition-all ease-in-out lg:static lg:bg-white lg:text-white lg:transition-none`}>
         <div className='flex justify-end'>
@@ -31,10 +38,13 @@ const Navbar = () => {
           </button>
         </div>
         <ul className='lg:flex lg:justify-between lg:text-black'>
-          <li className='item-effect'>Home</li>
-          <li className='item-effect'>Shop</li>
-          <li className='item-effect'>Styles</li>
-          <li className='item-effect'>Technology</li>
+          <li className='item-effect'><Link to="/">Home</Link></li>
+          <div className='flex justify-center'>
+          <li className='item-effect' onClick={handleActive}>Categories</li>
+          {(active) ? <CategoriesContainer /> : null}
+          </div>
+          <li className='item-effect'><Link to="/faq">Faq</Link></li>
+          <li className='item-effect'><Link to="/contact">Contact</Link></li>
         </ul>
       </div>
       <div className='flex justify-end gap-2 p-2'>

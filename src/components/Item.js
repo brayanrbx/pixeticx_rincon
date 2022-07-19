@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 /**
  * This component shows a bit information about item
@@ -14,7 +15,7 @@ const Item = ({ id, title, price, image }) => {
       <h2>{title}</h2>
       <p>$ {price}</p>
       <img src={image} alt={title} className='m-auto' />
-      <a href={id} className='mt-auto'>More details</a>
+      <Link to={`/item/${id}`} className='mt-auto item-effect'> See more </Link>
     </div>
   );
 };
