@@ -4,8 +4,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'oswald': ['Oswald', 'sans-serif'],
-        'roboto-slab': ['Roboto Slab', 'serif']
+        'poppins': ['Poppins', 'sans-serif'],
       },
     },
   },

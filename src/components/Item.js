@@ -11,11 +11,22 @@ import { Link } from 'react-router-dom';
  */
 const Item = ({ id, title, price, image }) => {
   return (
-    <div className='flex flex-col w-60 p-2 border text-center'>
-      <h2>{title}</h2>
-      <p>$ {price}</p>
-      <img src={image} alt={title} className='m-auto' />
-      <Link to={`/item/${id}`} className='mt-auto item-effect'> See more </Link>
+    <div className='card-item w-60 p-2 bg-[#F9F9F9] text-center'>
+      <div className='m-auto p-2'>
+        <img src={image} alt={title}/>
+      </div>
+      <div className='p-2'>
+        <h2>{title}</h2>
+        <p>$ {price}</p>
+        <button className='w-[90%] p-2 bg-sky-500 rounded text-white hover:bg-sky-600'>
+          <Link to={`/item/${id}`} className='flex justify-center gap-2 mt-auto block'>
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="white" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            See more
+          </Link>
+        </button>
+      </div>
     </div>
   );
 };

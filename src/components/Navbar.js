@@ -1,9 +1,8 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { React, useState } from 'react';
 import CartWidget from './CartWidget';
 import logo from '../assets/img/logo.svg';
 import CategoriesContainer from './CategoriesContainer';
+import { NavLink } from './NavLink';
 
 /**
  * This function let to create a component that added a navbar
@@ -20,16 +19,19 @@ const Navbar = () => {
     setClicked(!clicked);
   };
 
+  /**
+   * This function let to display the dropmenu in categories
+   */
   const handleActive = () => {
     setActive(!active);
   }
 
   return (
-    <nav className='grid grid-cols-2 items-center gap-2 mb-2 p-2 bg-white font-roboto-slab text-center lg:grid-cols-3'>
+    <nav className='grid grid-cols-2 items-center gap-2 mb-2 p-2 bg-white font-semibold text-center lg:grid-cols-3'>
       <div className='flex gap-10 p-2 w-36'>
-          <Link to="/"><img src={logo} alt='Logo' /></Link>
+          <NavLink to="/"><img src={logo} alt='Logo' /></NavLink>
       </div>
-      <div className={`${clicked ? 'top-0 left-0 w-[100%] duration-300': 'top-0 -left-[188rem] duration-300'} absolute flex flex-col p-2 bg-black text-white transition-all ease-in-out lg:static lg:bg-white lg:text-white lg:transition-none`}>
+      <div className={`${clicked ? 'top-0 left-0 w-[100%] duration-300' : 'top-0 -left-[188rem] duration-300'} absolute flex flex-col p-2 bg-black text-white transition-all ease-in-out lg:static lg:bg-white lg:text-white lg:transition-none`}>
         <div className='flex justify-end'>
           <button className='transition-all ease-in-out duration-700 hover:rotate-180 lg:hidden' onClick={handleClick}>
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="white" strokeWidth="2">
@@ -38,13 +40,13 @@ const Navbar = () => {
           </button>
         </div>
         <ul className='lg:flex lg:justify-between lg:text-black'>
-          <li className='item-effect'><Link to="/">Home</Link></li>
-          <div className='flex justify-center'>
-          <li className='item-effect' onClick={handleActive}>Categories</li>
+          <li className='item-effect' onClick={handleClick}><NavLink to="/">Home</NavLink></li>
+          <div className='flex justify-center' onClick={handleActive}>
+          <li className='item-effect'>Categories</li>
           {(active) ? <CategoriesContainer /> : null}
           </div>
-          <li className='item-effect'><Link to="/faq">Faq</Link></li>
-          <li className='item-effect'><Link to="/contact">Contact</Link></li>
+          <li className='item-effect' onClick={handleClick}><NavLink to="/faq">Faq</NavLink></li>
+          <li className='item-effect' onClick={handleClick}><NavLink to="/contact">Contact</NavLink></li>
         </ul>
       </div>
       <div className='flex justify-end gap-2 p-2'>

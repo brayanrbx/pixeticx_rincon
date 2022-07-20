@@ -1,17 +1,41 @@
-import React from 'react';
+import { React, useState } from 'react';
+import ItemCount from './ItemCount';
+import Purchase from './Purchase';
+import Swal from 'sweetalert2';
 
-const ItemDetail = ( { title, price, description, image }) => {
+/**
+ * This component let to return a card that show a product
+ * @param {int} title
+ * @param {int} price
+ * @param {string} description
+ * @param {string} image
+ * @returns {JSX.Element}
+ */
+const ItemDetail = ({ title, price, description, image }) => {
+  const [purchase, setPurchase] = useState(false);
+
+  const success = (n) => {
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: `Added ${n} products to cart`,
+      showConfirmButton: false,
+      timer: 1000
+    });
+    setPurchase(true);
+  };
+
   return (
-    <div className='flex flex-row gap-10 mx-auto p-2 border text-center sm:w-[70%]'>
-      <div>
-        <img src={image} alt={title} className="m-auto" />
+    <div className='card-item gap-10 mx-auto p-2 bg-[#F9F9F9] text-center sm:w-[70%]'>
+      <div className='self-center p-2'>
+        <img src={image} alt={title} className='w-52' />
       </div>
-      <div className='self-center'>
+      <div className='p-2'>
         <h2>{title}</h2>
-        <p>$ {price}</p>
-        <p>Description</p>
         <p>{description}</p>
+        <p>$ {price}</p>
       </div>
+      {!purchase ? <ItemCount stock={5} initial={1} onAdd={success} /> : <Purchase change={() => setPurchase(false)} />}
     </div>
   );
 };

@@ -19,3 +19,11 @@ code {
 .item-effect {
   @apply transition-all ease-in-out duration-300 cursor-pointer hover:text-sky-500;
 }
+
+.card-item {
+  @apply flex flex-col border rounded-md shadow-zinc-400 shadow-lg;
+}
+
+.is-active {
+  @apply text-sky-500 font-bold cursor-default;
+}

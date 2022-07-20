@@ -33,3 +33,7 @@ Se realiza la incorporación de las rutas dando asi una navegabilidad por la pag
 Gif de muestra para la entrega:
 
 <image src="./Gif.gif" alt="Gif">
+
+## Octava entrega
+
+Se agrega el evento de compra que permite dar funcionalidad al momento de agregar items y guardarlos en un estado aparte para su posterior utilización.
