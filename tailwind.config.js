@@ -8,5 +8,10 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [require("daisyui")],
+
+  // daisyUI config
+  daisyui: {
+    themes: [],
+  },
 }

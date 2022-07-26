@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import React, { useState } from 'react';
 import ItemCount from './ItemCount';
 import Purchase from './Purchase';
 import Swal from 'sweetalert2';
@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
  * @param {string} image
  * @returns {JSX.Element}
  */
-const ItemDetail = ({ title, price, description, image }) => {
+const ItemDetail = ({ title, price, description, image, rating }) => {
   const [purchase, setPurchase] = useState(false);
 
   const success = (n) => {
@@ -26,7 +26,7 @@ const ItemDetail = ({ title, price, description, image }) => {
   };
 
   return (
-    <div className='card-item gap-10 mx-auto p-2 bg-[#F9F9F9] text-center sm:w-[70%]'>
+    <div className='card-item gap-10 mx-auto p-2 bg-[#F9F9F9] text-center shadow-xl sm:w-[70%]'>
       <div className='self-center p-2'>
         <img src={image} alt={title} className='w-52' />
       </div>
@@ -35,7 +35,7 @@ const ItemDetail = ({ title, price, description, image }) => {
         <p>{description}</p>
         <p>$ {price}</p>
       </div>
-      {!purchase ? <ItemCount stock={5} initial={1} onAdd={success} /> : <Purchase change={() => setPurchase(false)} />}
+      {purchase ? <Purchase change={() => setPurchase(false)} /> : <ItemCount stock={rating.count} initial={1} onAdd={success} />}
     </div>
   );
 };

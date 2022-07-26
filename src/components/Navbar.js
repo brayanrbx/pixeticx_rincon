@@ -1,7 +1,7 @@
-import { React, useState } from 'react';
+import React, { useState } from 'react';
 import CartWidget from './CartWidget';
 import logo from '../assets/img/logo.svg';
-import CategoriesContainer from './CategoriesContainer';
+import CategoriesList from './CategoriesList';
 import { NavLink } from './NavLink';
 
 /**
@@ -10,7 +10,6 @@ import { NavLink } from './NavLink';
  */
 const Navbar = () => {
   const [clicked, setClicked] = useState(false);
-  const [active, setActive] = useState(false);
 
   /**
    * This function let to display the menu
@@ -19,34 +18,25 @@ const Navbar = () => {
     setClicked(!clicked);
   };
 
-  /**
-   * This function let to display the dropmenu in categories
-   */
-  const handleActive = () => {
-    setActive(!active);
-  }
-
   return (
-    <nav className='grid grid-cols-2 items-center gap-2 mb-2 p-2 bg-white font-semibold text-center lg:grid-cols-3'>
-      <div className='flex gap-10 p-2 w-36'>
+    <nav className='grid grid-cols-2 items-center gap-2 mb-2 mx-auto p-2 bg-[#F9F9F9] font-semibold text-center sm:w-[95%] md:w-[90%] lg:grid-cols-[1fr_2fr_1fr] lg:w-[85%] xl:w-4/5 2xl:w-9/12'>
+      <div className='p-2 w-36'>
           <NavLink to="/"><img src={logo} alt='Logo' /></NavLink>
       </div>
-      <div className={`${clicked ? 'top-0 left-0 w-[100%] duration-300' : 'top-0 -left-[188rem] duration-300'} absolute flex flex-col p-2 bg-black text-white transition-all ease-in-out lg:static lg:bg-white lg:text-white lg:transition-none`}>
-        <div className='flex justify-end'>
-          <button className='transition-all ease-in-out duration-700 hover:rotate-180 lg:hidden' onClick={handleClick}>
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="white" strokeWidth="2">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
-        <ul className='lg:flex lg:justify-between lg:text-black'>
-          <li className='item-effect' onClick={handleClick}><NavLink to="/">Home</NavLink></li>
-          <div className='flex justify-center' onClick={handleActive}>
-          <li className='item-effect'>Categories</li>
-          {(active) ? <CategoriesContainer /> : null}
+      <div className={`${clicked ? 'top-0 left-0 w-full duration-300': 'top-0 -left-[188rem] duration-300'} absolute flex flex-col p-2 bg-black text-white transition-all ease-in-out lg:static lg:bg-[#F9F9F9] lg:text-white lg:transition-none`}>
+        <button className='self-end transition-all ease-in-out duration-700 hover:rotate-180 lg:hidden' onClick={handleClick}>
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="white" strokeWidth="2">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+        <ul className='lg:flex lg:justify-evenly lg:text-black'>
+          <li className='item-effect p-2' onClick={handleClick}><NavLink to="/">Home</NavLink></li>
+          <div className='dropdown dropdown-hover'>
+          <li className='item-effect p-2'>Categories</li>
+          <CategoriesList />
           </div>
-          <li className='item-effect' onClick={handleClick}><NavLink to="/faq">Faq</NavLink></li>
-          <li className='item-effect' onClick={handleClick}><NavLink to="/contact">Contact</NavLink></li>
+          <li className='item-effect p-2' onClick={handleClick}><NavLink to="/faq">Faq</NavLink></li>
+          <li className='item-effect p-2' onClick={handleClick}><NavLink to="/contact">Contact</NavLink></li>
         </ul>
       </div>
       <div className='flex justify-end gap-2 p-2'>

@@ -1,20 +1,24 @@
-import { React, useState, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { useFetch } from '../hooks/useFetch';
 import ItemDetail from '../components/ItemDetail';
+import CartContext from '../context/CartContext';
 
 const ItemDetailContainer = () => {
-  const [element, setElement] = useState('');
   const { id } = useParams();
 
+  const { items, loading } = useFetch(`https://fakestoreapi.com/products/${id}`);
+
+  const { addProduct } = useContext(CartContext);
+
   useEffect(() => {
-    fetch(`https://fakestoreapi.com/products/${id}`)
-      .then(res => res.json())
-      .then(json => setElement(json))
-  }, [id]);
+    addProduct(items);
+  },[items]);
 
   return (
+    (loading) ? <>Loading...</> :
     <>
-      {element && (<ItemDetail {...element} />)}
+      {items && (<ItemDetail {...items} />)}
     </>
   );
 };
