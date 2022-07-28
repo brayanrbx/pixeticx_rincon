@@ -14,6 +14,10 @@ import Swal from 'sweetalert2';
 const ItemDetail = ({ title, price, description, image, rating }) => {
   const [purchase, setPurchase] = useState(false);
 
+  /**
+   * This function let to show a modal with the message added to cart and also call the function setPurchase
+   * @param {int} n - number of items
+   */
   const success = (n) => {
     Swal.fire({
       position: 'top-end',
@@ -26,11 +30,11 @@ const ItemDetail = ({ title, price, description, image, rating }) => {
   };
 
   return (
-    <div className='card-item gap-10 mx-auto p-2 bg-[#F9F9F9] text-center shadow-xl sm:w-[70%]'>
-      <div className='self-center p-2'>
-        <img src={image} alt={title} className='w-52' />
+    <div className='card gap-6 p-2 bg-[#F9F9F9] text-center shadow-xl sm:w-[70%]'>
+      <div className='self-center p-2 h-[300px]'>
+        <img src={image} alt={title} className='max-h-full object-cover' />
       </div>
-      <div className='p-2'>
+      <div className='flex flex-wrap gap-4 justify-center p-2'>
         <h2>{title}</h2>
         <p>{description}</p>
         <p>$ {price}</p>

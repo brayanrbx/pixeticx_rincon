@@ -13,7 +13,7 @@ const ItemListContainer = ({ greeting }) => {
   return (
     (loading) ? <>Loading...</> :
     <>
-      <div className='m-2 p-6 text-center'>{greeting}</div>
+      <h2 className='m-2 p-6 text-center text-3xl'>{greeting}</h2>
       {(pathname === '/') ? <ItemList items={items}  /> : <ItemList items={itemCategories} />}
     </>
   );

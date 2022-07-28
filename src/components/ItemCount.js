@@ -11,10 +11,14 @@ import  CartContext  from '../context/CartContext';
 const ItemCount = ({ stock, initial, onAdd }) => {
   const [count, setCount] = useState(initial);
 
-  const { addCart, } = useContext(CartContext);
+  // Get the method addCart form the context
+  const { product, addCart } = useContext(CartContext);
 
+  /**
+   * This function let add the product to cart and show a modal with the message added to cart
+   */
   const buy = () => {
-    if (count <= stock) {
+    if (count > 0 && count <= stock) {
       onAdd(count);
       addCart(count);
     }
@@ -23,7 +27,8 @@ const ItemCount = ({ stock, initial, onAdd }) => {
   return (
     <div className='grid gap-2 w-60 mx-auto mb-4 p-2 rounded'>
       <h3 className='text-center text-emerald-700'>{stock} in stock</h3>
-      <div className='flex justify-around gap-10 p-2 border-2 rounded'>
+      <h4>Total: $ {(count * product.price).toFixed(2)}</h4>
+      <div className='flex justify-around gap-10 p-2 border-2 rounded  hover:border-sky-500'>
         <button onClick={() => count > 0 && setCount(count - 1)}>-</button>
         <p>{count}</p>
         <button onClick={() => setCount(count + 1)}>+</button>

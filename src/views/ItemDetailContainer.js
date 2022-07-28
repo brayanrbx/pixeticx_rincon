@@ -17,9 +17,9 @@ const ItemDetailContainer = () => {
 
   return (
     (loading) ? <>Loading...</> :
-    <>
+    <section className='flex justify-center items-center min-h-screen'>
       {items && (<ItemDetail {...items} />)}
-    </>
+    </section>
   );
 };
 

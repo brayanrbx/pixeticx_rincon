@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import CartContext from '../context/CartContext';
+import CartIs from '../components/CartIs';
+import CartEmpty from '../components/CartEmpty';
+
 
 const Cart = () => {
+  const { cart } = useContext(CartContext);
   return (
-    <div>Cart</div>
+    <>
+      <h2 className='p-2 text-3xl'>Cart</h2>
+      <section className='flex justify-center items-center min-h-screen p-2'>
+        {cart.length > 0 ? <CartIs /> : <CartEmpty />}
+      </section>
+    </>
   );
 };
 

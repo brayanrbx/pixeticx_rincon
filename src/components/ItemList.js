@@ -8,7 +8,7 @@ import Item from './Item';
  */
 const ItemList = ({ items }) => {
   return (
-    <section className='grid justify-items-center gap-4 mx-auto p-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:w-4/5'>
+    <section className='grid justify-items-center gap-4 mx-auto p-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:w-4/5'>
       {items.map((item) => <Item {...item} key={item.id} />)}
     </section>
   );
