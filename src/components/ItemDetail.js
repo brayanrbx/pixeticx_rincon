@@ -14,6 +14,8 @@ import Swal from 'sweetalert2';
 const ItemDetail = ({ title, price, description, image, rating }) => {
   const [purchase, setPurchase] = useState(false);
 
+  console.log(rating?.count)
+
   /**
    * This function let to show a modal with the message added to cart and also call the function setPurchase
    * @param {int} n - number of items
@@ -39,7 +41,7 @@ const ItemDetail = ({ title, price, description, image, rating }) => {
         <p>{description}</p>
         <p>$ {price}</p>
       </div>
-      {purchase ? <Purchase change={() => setPurchase(false)} /> : <ItemCount stock={rating.count} initial={1} onAdd={success} />}
+      {purchase ? <Purchase change={() => setPurchase(false)} /> : <ItemCount stock={rating?.count} initial={1} onAdd={success} />}
     </div>
   );
 };

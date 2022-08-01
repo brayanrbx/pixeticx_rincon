@@ -11,22 +11,22 @@ export const useFetch = (url) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-      fetch(url)
-      .then(res => {
-        if (!res.ok) {
-          throw new Error(res.statusText);
-        }
-        return res.json();
-      })
-      .then(json => {
-        setItems(json);
-        setLoading(false);
-        setError({ err: false });
-      })
-      .catch(err => {
-        setLoading(true);
-        setError(err);
-      })
-    }, [url]);
-    return { items, loading, error };
+    fetch(url)
+    .then(res => {
+      if (!res.ok) {
+        throw new Error(res.statusText);
+      }
+      return res.json();
+    })
+    .then(json => {
+      setItems(json);
+      setLoading(false);
+      setError({ err: false });
+    })
+    .catch(err => {
+      setLoading(true);
+      setError(err);
+    })
+  }, [url]);
+  return { items, loading, error };
 };

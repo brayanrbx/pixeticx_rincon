@@ -37,7 +37,7 @@ const CardProvider = ({ children }) => {
       setCart(_cart);
     }
     else {
-      setCart([...cart, { product, quantity:count, totalPrice: (product.price * count)}]);
+      setCart([...cart, { product, quantity:count, totalPrice: (product.price * count) }]);
     }
   }
 
@@ -69,7 +69,7 @@ const CardProvider = ({ children }) => {
 
   const totalItemPrices = cart.map(item => item.totalPrice).reduce((prev, curr,) => prev + curr, 0);
 
-  const data = {product, addProduct, cart, addCart, modifiedQuantity, removeCart, clearCart, totalItems, totalItemPrices};
+  const data = { product, addProduct, cart, addCart, modifiedQuantity, removeCart, clearCart, totalItems, totalItemPrices };
 
   return (
     <CartContext.Provider value={data}>

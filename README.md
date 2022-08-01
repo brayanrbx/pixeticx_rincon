@@ -45,3 +45,7 @@ Se hace uso del context API que tiene react para crear un contexto el cual mante
 ## Décima Entrega
 
 Se expande las funcionalidades del componente Cart y CartWidget creados previamente en entregas anteriores, de esa forma sse podrán visualizar los productos agregados al carrito y su cantidad y precio de cada uno de ellos asi como el precio total de todos los productos, también se podrán remover productos agregados al carrito.
+
+## Onceava Entrega
+
+Se crea un ItemCollection en firestore que se conecta al listado de items y al detalle de item, se eliminan las promises y se reemplazan por lo llamados de firestore.
