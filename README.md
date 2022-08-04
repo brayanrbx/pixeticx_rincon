@@ -49,3 +49,7 @@ Se expande las funcionalidades del componente Cart y CartWidget creados previame
 ## Onceava Entrega
 
 Se crea un ItemCollection en firestore que se conecta al listado de items y al detalle de item, se eliminan las promises y se reemplazan por lo llamados de firestore.
+
+## Doceava Entrega
+
+Se crea una colección de ordenes utilizando operaciones de inserción se inserta en la colección una orden que permite darle al usuario un id autogenerado de su orden de compra.

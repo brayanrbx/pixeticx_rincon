@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import CartList from '../components/CartList';
 import CartContext from '../context/CartContext';
 
@@ -25,7 +26,9 @@ const CartIs = () => {
         <button className="btn btn-outline mt-4 p-2 hover:border-sky-500">Clear cart</button>
         </span>
         <span className='p-2'>
-        <button className="btn btn-outline mt-4 p-2 hover:border-sky-500">Checkout</button>
+        <button className="btn btn-outline mt-4 p-2 hover:border-sky-500">
+          <Link to='/checkout'>Checkout</Link>
+        </button>
         </span>
       </ul>
     </>

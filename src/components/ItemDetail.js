@@ -14,8 +14,6 @@ import Swal from 'sweetalert2';
 const ItemDetail = ({ title, price, description, image, rating }) => {
   const [purchase, setPurchase] = useState(false);
 
-  console.log(rating?.count)
-
   /**
    * This function let to show a modal with the message added to cart and also call the function setPurchase
    * @param {int} n - number of items
@@ -26,7 +24,7 @@ const ItemDetail = ({ title, price, description, image, rating }) => {
       icon: 'success',
       title: `Added ${n} products to cart`,
       showConfirmButton: false,
-      timer: 1000
+      timer: 1500
     });
     setPurchase(true);
   };

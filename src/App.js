@@ -7,6 +7,7 @@ import ItemDetailContainer from './views/ItemDetailContainer';
 import Faq from "./views/Faq";
 import Contact from "./views/Contact";
 import Cart from "./views/Cart";
+import Checkout from "./views/Checkout";
 
 function App() {
   return (
@@ -17,12 +18,13 @@ function App() {
         </header>
         <main className='p-2'>
           <Routes>
-            <Route path="/" element={<ItemListContainer greeting="Welcome" />} />
+            <Route path="/" element={<ItemListContainer />} />
             <Route path="/category/:category" element={<ItemListContainer />} />
             <Route path="/item/:id" element={<ItemDetailContainer />} />
             <Route path="/faq" element={<Faq />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/checkout" element={<Checkout />} />
           </Routes>
         </main>
       </div>

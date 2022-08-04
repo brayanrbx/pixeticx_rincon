@@ -56,4 +56,14 @@ const getProductById = async (productId) => {
   return (await getDoc(doc(db, "items", productId))).data();
 };
 
-export { setCollection, updateCollection, getAllProducts, getProductsByCategoryId, getProducts, getProductById };
+const generateBuyer = async (items) => {
+  const colRef = collection(db, "buyers");
+  const docRef = await addDoc(colRef, items);
+  return docRef.id;
+};
+
+const updateBuyer = async (id, items) => {
+  await updateDoc(doc(db, "buyers", id), items);
+};
+
+export { setCollection, updateCollection, getAllProducts, getProductsByCategoryId, getProducts, getProductById, generateBuyer, updateBuyer };

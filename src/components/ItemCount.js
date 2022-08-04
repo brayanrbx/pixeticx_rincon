@@ -22,13 +22,13 @@ const ItemCount = ({ stock, initial, onAdd }) => {
       onAdd(count);
       addCart(count);
     }
-  }
+  };
 
   return (
     <div className='grid gap-2 w-60 mx-auto mb-4 p-2 rounded'>
       <h3 className='text-center text-emerald-700'>{stock} in stock</h3>
       <h4>Total: $ {(count * product.price).toFixed(2)}</h4>
-      <div className='flex justify-around gap-10 p-2 border-2 rounded  hover:border-sky-500'>
+      <div className='flex justify-around gap-10 p-2 border-2 rounded hover:border-sky-500'>
         <button onClick={() => count > 0 && setCount(count - 1)}>-</button>
         <p>{count}</p>
         <button onClick={() => setCount(count + 1)}>+</button>
