@@ -8,7 +8,7 @@ const Cart = () => {
   return (
     <>
       <h2 className='m-2 p-6 text-center text-3xl'>Cart</h2>
-      <section className='flex justify-center items-center min-h-screen p-2'>
+      <section className='flex justify-center items-center p-2'>
         {cart.length > 0 ? <CartIs /> : <CartEmpty />}
       </section>
     </>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm } from '../hooks/useForm';
+import Swal from 'sweetalert2';
 
 const Form = () => {
   const initialForm  = {
@@ -41,11 +42,19 @@ const Form = () => {
         error.confirmEmail = 'Emails do not match';
       }
     }
-
     return error;
   };
 
-  const { form, errors, loading, response, handleChange, handleBlur, handleSubmit} = useForm(initialForm, validateForm);
+  const order = (id) => {
+    Swal.fire({
+      icon: 'success',
+      title: 'Orden generada',
+      text: `Su orden ha sido generada con éxito
+            el id de su orden es: ${id}`,
+    })
+  }
+
+  const { form, errors, loading, response, handleChange, handleBlur, handleSubmit } = useForm(initialForm, validateForm, order);
 
   return (
     <>

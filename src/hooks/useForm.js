@@ -1,14 +1,14 @@
 import { useState, useContext } from "react";
-import { generateBuyer, updateBuyer } from '../firebase';
+import { addCollection } from '../firebase';
 import CartContext from '../context/CartContext';
 
-export const useForm = (initialForm, validateForm) => {
+export const useForm = (initialForm, validateForm, order) => {
   const [form, setForm] = useState(initialForm);
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
   const [response, setResponse] = useState(null);
 
-  const { cart } = useContext(CartContext);
+  const { cart, totalItemPrices, setBuyer } = useContext(CartContext);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -20,13 +20,17 @@ export const useForm = (initialForm, validateForm) => {
     setErrors(validateForm(form));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors(validateForm(form));
 
     if (Object.keys(errors).length === 0) {
-      generateBuyer({ buyer: form, item: cart })
-      .then(res => console.log(res));
+      const date = Date.now();
+      const today = new Date(date).toDateString();
+      console.log(today);
+      const _buyer = await addCollection("buyers", { buyer: form, item: {cart}, date: today, total: totalItemPrices.toFixed(2) })
+      setBuyer(_buyer);
+      order(_buyer);
       console.log("Form is valid", form);
       setForm(initialForm);
     }
@@ -42,6 +46,6 @@ export const useForm = (initialForm, validateForm) => {
     response,
     handleChange,
     handleBlur,
-    handleSubmit
+    handleSubmit,
   };
 };

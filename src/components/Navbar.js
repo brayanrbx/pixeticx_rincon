@@ -35,7 +35,6 @@ const Navbar = () => {
           <li className='item-effect p-2'>Categories</li>
           <CategoriesList />
           </div>
-          <li className='item-effect p-2' onClick={handleClick}><NavLink to="/faq">Faq</NavLink></li>
           <li className='item-effect p-2' onClick={handleClick}><NavLink to="/contact">Contact</NavLink></li>
         </ul>
       </div>

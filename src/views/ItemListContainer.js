@@ -11,11 +11,11 @@ const ItemListContainer = ({ greeting }) => {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    getProducts().then(snapshot => setItems(snapshot.docs.map(doc => doc.data())));
+    getProducts("items").then(snapshot => setItems(snapshot.docs.map(doc => doc.data())));
   }, []);
 
   useEffect(() => {
-    getProducts(category).then(snapshot => setCategories(snapshot.docs.map(doc => doc.data())));
+    getProducts("items", category).then(snapshot => setCategories(snapshot.docs.map(doc => doc.data())));
   }, [category]);
 
   return (

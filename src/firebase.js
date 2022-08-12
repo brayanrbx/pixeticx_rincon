@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, doc, addDoc, getDoc, getDocs, setDoc, updateDoc, query, where, } from "firebase/firestore";
+import { getFirestore, collection, doc, addDoc, deleteDoc, deleteField, getDoc, getDocs, setDoc, updateDoc, query, where, } from "firebase/firestore";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -20,50 +20,69 @@ const app = initializeApp(firebaseConfig);
 // Initialize Cloud Firestore and get a reference to the service
 const db = getFirestore(app);
 
-// variable that reference to collection items
-const itemRef = collection(db, "items");
-
-const setCollection = async (items) => {
-  await addDoc(collection(db, "items"), items);
-};
-
-const updateCollection = async (ref) => {
-  await updateDoc(doc(db, "items", ref), { id: ref });
-};
-
-const getAllProducts = async () => {
-  const q = query(itemRef);
-  return await getDocs(q);
-};
-
-const getProductsByCategoryId = async (categoryId) => {
-  if (!categoryId) throw new Error("Missing categoryId");
-  const q = query(itemRef, where("category", "==", categoryId));
-  return await getDocs(q);
-};
-
-const getProducts = async (categoryId) => {
-  if (categoryId) {
-    return await getProductsByCategoryId(categoryId);
-  }
-  else {
-    return await getAllProducts();
-  }
-};
-
-const getProductById = async (productId) => {
-  if (!productId) throw new Error("Missing productId");
-  return (await getDoc(doc(db, "items", productId))).data();
-};
-
-const generateBuyer = async (items) => {
-  const colRef = collection(db, "buyers");
+const addCollection = async (collections, items) => {
+  const colRef = collection(db, collections);
   const docRef = await addDoc(colRef, items);
   return docRef.id;
 };
 
-const updateBuyer = async (id, items) => {
-  await updateDoc(doc(db, "buyers", id), items);
+const updateCollection = async (collections, id, items) => {
+  await updateDoc(doc(db, collections, id), items);
 };
 
-export { setCollection, updateCollection, getAllProducts, getProductsByCategoryId, getProducts, getProductById, generateBuyer, updateBuyer };
+const getCollection = async (collections, id) => {
+  const docRef = doc(db, collections, id);
+  const docSnap = await getDoc(docRef);
+  if (docSnap.exists()) {
+    console.log("Document data:", docSnap.data());
+    return docSnap.data()
+  } else {
+    // doc.data() will be undefined in this case
+    return console.log("No such document!");
+  }
+};
+
+const deleteCollection = async (collections, id) => {
+  await deleteDoc(doc(db, collections, id));
+};
+
+const deleteFieldCollection = async (collections, productId, field) => {
+  console.log("")
+};
+
+const getAllProducts = async (collections) => {
+  const q = query(collection(db, collections));
+  return await getDocs(q);
+};
+
+const getProductsByCategoryId = async (collections, categoryId) => {
+  if (!categoryId) throw new Error("Missing categoryId");
+  const q = query(collection(db, collections), where("category", "==", categoryId));
+  return await getDocs(q);
+};
+
+const getProducts = async (collections, categoryId) => {
+  if (categoryId) {
+    return await getProductsByCategoryId(collections, categoryId);
+  }
+  else {
+    return await getAllProducts(collections);
+  }
+};
+
+const getProductById = async (collections,productId) => {
+  if (!productId) throw new Error("Missing productId");
+  return (await getDoc(doc(db, collections, productId))).data();
+};
+
+// const generateBuyer = async (collections, items) => {
+//   const colRef = collection(db, collections);
+//   const docRef = await addDoc(colRef, items);
+//   return docRef.id;
+// };
+
+// const updateBuyer = async (collections, id, items) => {
+//   await updateDoc(doc(db, collections, id), items);
+// };
+
+export { addCollection, updateCollection, getCollection, deleteCollection, getAllProducts, getProductsByCategoryId, getProducts, getProductById};

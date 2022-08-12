@@ -10,7 +10,7 @@ const ItemDetailContainer = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    getProductById(id).then(snapshot => setItems(snapshot));
+    getProductById("items", id).then(snapshot => setItems(snapshot));
   }, [id]);
 
   const { addProduct } = useContext(CartContext);

@@ -53,3 +53,7 @@ Se crea un ItemCollection en firestore que se conecta al listado de items y al d
 ## Doceava Entrega
 
 Se crea una colección de ordenes utilizando operaciones de inserción se inserta en la colección una orden que permite darle al usuario un id autogenerado de su orden de compra.
+
+## Entrega Final
+
+Se agrega un footer al e-commerce y se corrigen algunos detalles de ciertos componentes.

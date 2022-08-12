@@ -5,7 +5,7 @@ const CartList = ( item ) => {
   const { modifiedQuantity, removeCart } = useContext(CartContext);
 
   return (
-    <li className='grid grid-cols-6 justify-items-center items-center gap-4 p-2 shadow-zinc-400 text-sm'>
+    <li className='grid grid-cols-6 justify-items-center items-center gap-4 p-2 h-56 shadow-zinc-400 text-sm'>
       <span>
         <img src={item.product.image} alt={item.product.title} className='w-32'/>
       </span>

@@ -6,6 +6,7 @@ const CardProvider = ({ children }) => {
 
   const [product, setProduct] = useState([]);
   const [cart, setCart] = useState([]);
+  const[buyer, setBuyer] = useState(null);
 
   /**
    * This function let add a product to state
@@ -69,7 +70,7 @@ const CardProvider = ({ children }) => {
 
   const totalItemPrices = cart.map(item => item.totalPrice).reduce((prev, curr,) => prev + curr, 0);
 
-  const data = { product, addProduct, cart, addCart, modifiedQuantity, removeCart, clearCart, totalItems, totalItemPrices };
+  const data = { product, addProduct, cart, addCart, modifiedQuantity, removeCart, clearCart, totalItems, totalItemPrices, setBuyer };
 
   return (
     <CartContext.Provider value={data}>
